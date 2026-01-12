@@ -346,29 +346,10 @@ src="https://www.facebook.com/tr?id=767717702355773&ev=PageView&noscript=1"
         });
     </script>
 
-     <script>
-function trackSubscribe() {
-
-  // Agar event pehle fire ho chuka hai
-  if (localStorage.getItem('subscribed') === 'true') {
-    console.log("Subscribe event already fired.");
-    return;
-  }
-
-  // Unique Event ID
-  const eventId = 'subscribe_' + Date.now();
-
-  // Facebook Pixel Event
-  if (typeof fbq === "function") {
-      fbq('trackCustom', 'Subscribe', {}, { eventID: eventId });
-      console.log("Subscribe event fired with ID:", eventId);
-  } else {
-      console.error("fbq not loaded!");
-  }
-
-  // Save in localStorage
-  localStorage.setItem('subscribed', 'true');
-}
-</script>
+        <script>
+        function trackSubscribe() {
+            fbq('track', 'Subscribe');
+        }
+    </script>
 
 </body></html>
