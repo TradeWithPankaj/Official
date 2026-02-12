@@ -344,12 +344,22 @@ src="https://www.facebook.com/tr?id=767717702355773&ev=PageView&noscript=1"
             document.getElementById('logo-image').src = config.imageSrc;
             document.getElementById('telegram-link').href = config.telegramLink;
         });
-    </script>
+  <script>
+function trackSubscribe() {
+  // Agar already fire ho chuka hai
+  if (localStorage.getItem('subscribed') === 'true') {
+    console.log("Already subscribed event fired, not sending again.");
+    return;
+  }
 
-        <script>
-        function trackSubscribe() {
-            fbq('track', 'Subscribe');
-        }
-    </script>
+  const eventId = 'subscribe_' + Date.now();
+
+  // 🔹 Pixel Event (Browser only)
+  fbq('trackCustom', 'Subscribe', {}, { eventID: eventId });
+
+  // Mark as subscribed (taaki dobara na fire ho)
+  localStorage.setItem('subscribed', 'true');
+}
+</script>
 
 </body></html>
