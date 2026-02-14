@@ -357,7 +357,7 @@ function trackSubscribe() {
   const eventId = 'subscribe_' + Date.now();
 
   // 🔹 Pixel Event (Browser only)
-  fbq('trackCustom', 'Subscribe', {}, { eventID: eventId });
+  fbq('trackCustom', 'Subscribe', {value: 0.00, currency: 'INR'}, { eventID: eventId });
 
   // Mark as subscribed (taaki dobara na fire ho)
   localStorage.setItem('subscribed', 'true');
